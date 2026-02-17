@@ -1,0 +1,43 @@
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="log">
+        <img src="keep.png">
+      </div>
+      <div class="head">SIMS</div>
+      <div class="head-line">|</div>
+     <p>Stock Inventory Management system </p>
+    </header>
+    <section id="login-section" class="login-pages">
+      <div class="login-keep">
+        <h1 class="header-login">Sighn In</h1>
+        <form>
+          <label>Email Address</label>
+          <input type="text" id="username" placeholder="username" required />
+          <label>Password</label>
+          <input type="password" id="password" placeholder="password" />
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+        <div class="sn">
+          <div class="div-line-login"></div>
+          <div class="or">OR</div>
+          <div class="div-line-login"></div>
+        </div>
+        <p class="forgot-pass">Forgot password?</p>
+      </div>
+      <div class="box">
+        <p>
+          Don't have an account?
+          <a href="register.html" onclick="showlogin()">Register</a>
+        </p>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="ttt">
+      <div class="log">
+        <img src="keep.png" />
+      </div>
+      <div class="head">SIMS</div>
+      <div class="head-line">|</div>
+      <p>Stock Inventory Management system</p>
+    </header>
+    <section id="Signup-section" class="register-page">
+      <div class="register-keep">
+        <h1 class="register-login">Create New Account</h1>
+        <div class="head-line-register"></div>
+        <form
+          onsubmit="
+            event.preventDefault();
+            showlogin();
+          "
+        >
+          <label> Full Name</label>
+          <input type="text" placeholder="Enter your Full Name" required />
+          <label>Email Address</label>
+          <input type="email" placeholder="Enter your Email" required />
+          <label>Password</label>
+          <input type="password" placeholder="Create Password" required />
+          <label>Confirm Password</label>
+          <input type="Password" placeholder="Confirm Password" />
+          <button type="submit" class="register-btn">Register</button>
+        </form>
+        <div class="ln">
+          <div class="div-line-register"></div>
+          <div class="or">OR</div>
+          <div class="div-line-register"></div>
+        </div>
+      </div>
+      <div class="pgh">
+        <p class="nm">
+          Already have an Account
+          <a href="login.html" onclick="showlogin()">Login</a>
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
