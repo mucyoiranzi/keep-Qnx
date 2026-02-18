@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  background: rgb(244, 229, 201);
+}
+.login-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(
+    rgb(10, 2, 249),
+    rgb(250, 250, 138),
+    rgb(36, 2, 232)
+  );
+  box-shadow: linear-gradient(white, rgb(250, 250, 138), rgb(22, 1, 250));
+}
+.login-keep {
+  background: linear-gradient(rgb(31, 2, 255), yellow, orangered);
+  border: 1px solid black;
+  width: 350px;
+  padding: 35px;
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+.header-login {
+  font-family: "Brush Script MT", cursive;
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+}
+.login-keep input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 7px;
+  background: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.login-btn {
+  width: 100%;
+  background: blue;
+  color: white;
+  border: none;
+  padding: 7px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.sn {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.div-line-login {
+  flex: 1;
+  height: 1px;
+  background: #dbdbdb;
+}
+.or {
+  margin: 0 15px;
+  color: #030101;
+  font-size: 13px;
+  font-weight: bold;
+}
+.box {
+  background: linear-gradient(rgb(2, 19, 250), yellow, orangered);
+  border: 1px solid black;
+  width: 350px;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 8px;
+}
+.box a {
+  color: blue;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: larger;
+}
+.register-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(
+    rgb(1, 17, 252),
+    rgb(250, 250, 138),
+    rgb(39, 1, 255)
+  );
+  box-shadow: linear-gradient(white, rgb(250, 250, 138), rgb(239, 211, 201));
+}
+.register-keep {
+  background: linear-gradient(rgb(1, 10, 247), yellow, orangered);
+  border: 1px solid black;
+  width: 350px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  margin-top: 100px;
+}
+.register-login {
+  font-family: "Brush Script MT", cursive;
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+}
+.register-keep input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 7px;
+  background: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.register-btn {
+  width: 100%;
+  background: blue;
+  color: white;
+  border: none;
+  padding: 7px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.ln {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.div-line-register {
+  flex: 1;
+  height: 1px;
+  background: #dbdbdb;
+}
+.or {
+  margin: 0 15px;
+  color: #030101;
+  font-size: 13px;
+  font-weight: bold;
+}
+.pgh {
+  background: linear-gradient(blue, yellow, orangered);
+  border: 1px solid black;
+  width: 350px;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 8px;
+}
+.pgh a {
+  color: blue;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: large;
+}
+header {
+  background: linear-gradient(blue, black);
+  color: white;
+  display: flex;
+  padding: 15px;
+}
+.head {
+  font-weight: bolder;
+  padding: 8px;
+  font-size: x-large;
+}
+.head-line {
+  padding: 8px;
+  font-size: x-large;
+}
+p {
+  padding: 14px;
+}
+.log {
+  padding: 6px;
+}
+
+header a {
+  color: white;
+  display: flex;
+}
+.ttt {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+aside{
+  background: #030101;
+  width: 220px;
+  text-align: center;
+}
+main{
+  display: flex;
+  height: 87.8vh;
+  width: 400px;
+}
+ul{
+  margin-top: 30px;
+}
+ul a{
+  text-decoration: none;
+  color: white;
+}
+ul a:hover{
+  background-color: blue;
+  padding: 15px;
+  border-radius: 8px;
+  transform: translatey(15px);
+  transition: 16ms;
+}
+.jjj h1 {
+  margin-bottom: 0;
+}
+
+.jjj p {
+  margin-top: 0;
+  color: gray; /* optional */
+  font-size: 14px; /* optional */
+}
+.jjj {
+  text-align: center;
+  margin:10px ;
+}
+
+
