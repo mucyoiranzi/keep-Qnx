@@ -1,42 +1,69 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>SIMS Login</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
-  <body class="auth-body">
-    <div class="auth-card">
-      <div class="brand">
-        <img src="Gen.png" class="logo" />
-        <!-- <img src="images/logo.png"> -->
-        <h1>SIMS</h1>
-        <h4>|</h4>
-        <p>Stock Inventory Management System</p>
-      </div>
-      <e>
-        <h2>Sign In</h2>
-        <hr />
-      </e>
-      <!--login-->
-      <label><i class="fa fa-envelope"></i> Email Address</label>
-      <input id="lemail" type="email" placeholder="Enter your email" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMS | Login</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="login-pages">
+        <div class="login-keep">
+            <h1 class="header-login">Welcome Back</h1>
+            
+            <form id="loginForm">
+                <label>Email Address</label>
+                <div class="input-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
 
-      <label><i class="fa fa-lock"></i> Password</label>
-      <input id="lpass" type="password" placeholder="Enter your password" />
+                <label>Password</label>
+                <div class="input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Enter password" required>
+                </div>
 
-      <button onclick="login()">Login</button>
-      <p>________________________________________</p>
-      <article>
-        <p id="lmsg">Don't have an account?</p>
-        <a href="register.html">Register</a>
-      </article>
+                <div class="forgot-pass">
+                    <a href="#" class="forgot-pass-link">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                </button>
+                
+                <p class="error" id="loginError"></p>
+            </form>
+
+            <p class="switch-page">
+                Don't have an account?
+                <a href="register.html">Create Account</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotModal" class="forgot-modal hidden">
+        <div class="forgot-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h3>Reset Password</h3>
+            <p>Enter your email to reset your password</p>
+            
+            <input type="email" id="forgotEmail" placeholder="Enter your email">
+            
+            <button id="checkPasswordBtn">
+                <i class="fa-solid fa-paper-plane"></i> Send Reset Link
+            </button>
+            
+            <p class="forgot-result" id="forgotResult"></p>
+        </div>
     </div>
 
     <script src="auth.js"></script>
-  </body>
+</body>
 </html>

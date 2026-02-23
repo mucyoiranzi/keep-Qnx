@@ -1,149 +1,102 @@
-/* USERS */
-function getUsers() {
-  return JSON.parse(localStorage.getItem("users")) || [];
-}
-function saveUsers(u) {
-  localStorage.setItem("users", JSON.stringify(u));
-}
+// ================= REGISTER =================
+const registerForm = document.getElementById('registerForm');
+if(registerForm){
+    const registerError = document.getElementById('registerError');
 
-function register() {
-  let n = rname.value,
-    e = remail.value,
-    p = rpass.value,
-    c = rcpass.value;
-  let u = getUsers();
-  if (!n || !e || !p || !c) {
-    rmsg.innerText = "Fill all please ";
-    return;
-  }
-  if (u.find((x) => x.email === e)) {
-    rmsg.innerText = "Email exists";
-    return;
-  }
-  if (p !== c) {
-    rmsg.innerText = "Fill much info";
-    return;
-  }
-  u.push({ name: n, email: e, pass: p });
-  saveUsers(u);
-  location = "login.html";
-}
+    registerForm.addEventListener('submit', e=>{
+        e.preventDefault();
 
-function login() {
-  let e = lemail.value,
-    p = lpass.value;
-  let u = getUsers().find((x) => x.email === e && x.pass === p);
-  if (!u) {
-    lmsg.innerText = "Wrong login ";
-    return;
-  }
-  localStorage.setItem("logged", JSON.stringify(u));
-  location = "dashboard.html";
+        const name = document.getElementById('regName').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const password = document.getElementById('regPassword').value;
+        const confirm = document.getElementById('regConfirm').value;
+
+        if(password !== confirm){
+            registerError.innerText = "Passwords do not match!";
+            return;
+        }
+
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        const exists = users.some(u => u.email === email);
+        if(exists){
+            registerError.innerText = "Email already registered!";
+            return;
+        }
+
+        users.push({name, email, password});
+        localStorage.setItem('users', JSON.stringify(users));
+        alert("Registration successful! Please login.");
+        window.location.href = 'login.html';
+    });
 }
 
-function logout() {
-  localStorage.removeItem("logged");
-  location = "login.html";
+// ================= LOGIN =================
+const loginForm = document.getElementById('loginForm');
+if(loginForm){
+    const loginError = document.getElementById('loginError');
+
+    loginForm.addEventListener('submit', e=>{
+        e.preventDefault();
+
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if(user){
+            localStorage.setItem('loggedInUser', JSON.stringify({name: user.name, email: user.email}));
+            window.location.href = 'Dashboard.html';
+        } else {
+            loginError.innerText = "Invalid email or password!";
+        }
+    });
 }
 
-/* DASH */
-function initDash() {
-  let u = JSON.parse(localStorage.getItem("logged"));
-  if (!u) location = "login.html";
-  uname.innerText = u.name;
-  loadProducts();
-}
+// ================= FORGOT PASSWORD MODAL =================
+const forgotModal = document.getElementById('forgotModal');
+const forgotPassBtn = document.querySelector('.forgot-pass');
+const closeModal = document.getElementById('closeModal');
+const checkPasswordBtn = document.getElementById('checkPasswordBtn');
+const forgotResult = document.getElementById('forgotResult');
 
-/* PRODUCTS */
-function getP() {
-  return JSON.parse(localStorage.getItem("products")) || [];
-}
-function saveP(p) {
-  localStorage.setItem("products", JSON.stringify(p));
-}
+if(forgotModal) {
+    if(forgotPassBtn){
+        forgotPassBtn.addEventListener('click', ()=>{
+            forgotModal.classList.remove('hidden');
+            forgotResult.innerText = "";
+            document.getElementById('forgotEmail').value = "";
+        });
+    }
 
-function toggleForm() {
-  pform.classList.toggle("hidden");
-}
+    if(closeModal){
+        closeModal.addEventListener('click', ()=>{
+            forgotModal.classList.add('hidden');
+        });
+    }
 
-function addProduct() {
-  let n = pname.value,
-    c = pcat.value,
-    q = Number(pqty.value),
-    pr = Number(pprice.value);
-  if (!n || !c || q < 0 || isNaN(pr)) return;
-  let p = getP();
-  p.push({ id: "P" + Date.now(), name: n, cat: c, qty: q, price: pr });
-  saveP(p);
-  loadProducts();
-}
+    if(checkPasswordBtn){
+        checkPasswordBtn.addEventListener('click', ()=>{
+            const email = document.getElementById('forgotEmail').value.trim();
+            if(!email){
+                forgotResult.innerText = "Please enter your email!";
+                return;
+            }
 
-function delProduct(id) {
-  let p = getP().filter((x) => x.id !== id);
-  saveP(p);
-  loadProducts();
-}
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email);
 
-function loadProducts() {
-  let p = getP();
-  ptable.innerHTML = "";
+            if(user){
+                forgotResult.innerText = "✅ Password reset link sent to your email!";
+            } else {
+                forgotResult.innerText = "❌ Email not found!";
+            }
+        });
+    }
 
-  let ins = 0,
-    out = 0;
-
-  if (p.length === 0) {
-    ptable.innerHTML = `
-        <tr>
-          <td colspan="7" style="text-align:center; padding:20px;">
-            No products available
-          </td>
-        </tr>`;
-  }
-
-  p.forEach((x) => {
-    let statusText = x.qty > 0 ? "In Stock" : "Out of Stock";
-    let statusClass = x.qty > 0 ? "status-in" : "status-out";
-
-    if (x.qty > 0) ins++;
-    else out++;
-
-    ptable.innerHTML += `
-        <tr>
-          <td>${x.id}</td>
-          <td>${x.name}</td>
-          <td>${x.cat}</td>
-          <td>${x.qty}</td>
-          <td>$${x.price}</td>
-          <td>
-            <span class="${statusClass}">
-              ${statusText}
-            </span>
-          </td>
-          <td>
-            <button class="delBtn" onclick="delProduct('${x.id}')">
-              Delete
-            </button>
-          </td>
-        </tr>
-      `;
-  });
-
-  tprod.innerText = p.length;
-  inst.innerText = ins;
-  outst.innerText = out;
-}
-function showDashboard() {
-  dashboardSection.classList.remove("hidden");
-  productSection.classList.add("hidden");
-
-  dashBtn.classList.add("active");
-  prodBtn.classList.remove("active");
-}
-
-function showProducts() {
-  dashboardSection.classList.add("hidden");
-  productSection.classList.remove("hidden");
-
-  prodBtn.classList.add("active");
-  dashBtn.classList.remove("active");
+    window.addEventListener('click', (e)=>{
+        if(e.target === forgotModal){
+            forgotModal.classList.add('hidden');
+        }
+    });
 }
