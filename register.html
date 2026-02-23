@@ -1,54 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIMS | Register</title>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>SIMS Register</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
-    <section class="register-page">
-        <div class="register-keep">
-            <h1 class="register-login">Create Account</h1>
-            
-            <form id="registerForm">
-                <label>Full Name</label>
-                <div class="input-icon">
-                    <i class="fa-solid fa-user"></i>
-                    <input type="text" id="regName" placeholder="Enter your full name" required>
-                </div>
+<body class="auth-body">
 
-                <label>Email Address</label>
-                <div class="input-icon">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" id="regEmail" placeholder="Enter your email" required>
-                </div>
+<div class="auth-card">
 
-                <label>Password</label>
-                <div class="input-icon">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="regPassword" placeholder="Create password" required>
-                </div>
+<div class="brand">
+  <img src="Gen.png" class="logo">
+    <!-- <img src="images/logo.png"> -->
+    <h1>SIMS   </h1> 
+    <h3> |</h3>
+    <p>  Stock Inventory Management System</p>
+  </div>
+  <e>
+<h2>Create New Account</h2><hr>
+</e>
+<label><i class="fa fa-user"></i> Full Name</label>
+<input id="rname" type="text" placeholder= "Enter your full Name">
 
-                <label>Confirm Password</label>
-                <div class="input-icon">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="regConfirm" placeholder="Confirm password" required>
-                </div>
+<label><i class="fa fa-envelope"></i> Email</label>
+<input id="remail" type="email" placeholder="Enter your email">
 
-                <button type="submit" class="register-btn">Register</button>
-                <p class="error" id="registerError"></p>
-            </form>
+<label><i class="fa fa-lock"></i> Password</label>
+<input id="rpass" type="password" placeholder="Create password ">
 
-            <p class="switch-page">Already have an account? <a href="login.html">Login</a></p>
-        </div>
-    </section>
+<label><i class="fa fa-lock"></i> Confirm Password</label>
+<input id="rcpass" type="password" placeholder="Confirm your password ">
 
-    <script src="auth.js"></script>
+<button onclick="register()">Register Account</button> 
+<p>________________________________________</p>
+<article>
+<p id="rmsg">Already have account?</p>
+<a href="login.html"> Login</a>
+</article>
+</div>
+</div>
+<!-- </fieldset> -->
+<script src="auth.js"></script>
 </body>
 </html>
