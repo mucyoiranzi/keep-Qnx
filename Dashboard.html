@@ -11,11 +11,38 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <script>
+      // THIS RUNS IMMEDIATELY - Checks if user is logged in
+      (function() {
+        // Get logged in user from localStorage
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        
+        // If no user is logged in, redirect to login page immediately
+        if (!loggedInUser) {
+          window.location.replace('login.html');
+          return; // Stop further execution
+        }
+        
+        // Optional: Parse the user data to verify it's valid
+        try {
+          const userData = JSON.parse(loggedInUser);
+          // If user data doesn't have required fields, redirect
+          if (!userData.email || !userData.name) {
+            localStorage.removeItem('loggedInUser'); // Clear invalid data
+            window.location.replace('login.html');
+          }
+        } catch (e) {
+          // If JSON parsing fails, redirect
+          localStorage.removeItem('loggedInUser');
+          window.location.replace('login.html');
+        }
+      })();
+    </script>
     <header>
       <div style="display: flex; align-items: center">
         <div class="log">
           <img
-         src="Gen.png"
+         src="keep.png"
             alt="Logo"
             onerror="this.src = 'https://via.placeholder.com/40x40?text=SIMS'"
           />
